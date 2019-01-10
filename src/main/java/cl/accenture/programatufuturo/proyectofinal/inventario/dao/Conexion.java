@@ -35,10 +35,10 @@ public class Conexion {
 
             return connection;
         } catch (ClassNotFoundException e){
-            throw new SinConexionException("El driver no se ha cargado correctamente", e);
+            throw new SinConexionException("El driver no se ha cargado correctamente");
 
         }catch (SQLException e){
-            throw new SinConexionException("Ocurrio un error al establecer la conexion : " + e.getMessage(), e);
+            throw new SinConexionException("Ocurrio un error al establecer la conexion : " + e.getMessage());
 
         }
 

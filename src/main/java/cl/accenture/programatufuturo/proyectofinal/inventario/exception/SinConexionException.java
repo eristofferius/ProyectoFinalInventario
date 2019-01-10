@@ -4,8 +4,8 @@ public class SinConexionException extends Exception {
 
     //Falta comentar que hace exactamente esta exeption
 
-    public SinConexionException(String message, Throwable e) {
-        super(message, e);
+    public SinConexionException(String message) {
+        super(message);
     }
 
 }
