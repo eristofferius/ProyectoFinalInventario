@@ -29,6 +29,7 @@ public class Sucursal {
     }
 
     public void setIdTienda(int nuevoIdTienda) {
+
         this.idTienda = idTienda;
     }
 
