@@ -54,6 +54,9 @@ public class Usuario {
     }
 
     //No existe metodo get para password por tema de seguridad
+    public String getPassword() {
+        return this.password;
+    }
 
     public void setPassword(String nuevaPassword) {
         this.password = nuevaPassword;

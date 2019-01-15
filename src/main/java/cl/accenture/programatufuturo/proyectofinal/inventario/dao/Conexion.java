@@ -2,6 +2,7 @@ package cl.accenture.programatufuturo.proyectofinal.inventario.dao;
 
 //Es necesario importar mi clase sin conexion
 
+import cl.accenture.programatufuturo.proyectofinal.inventario.exception.DriverErrorException;
 import cl.accenture.programatufuturo.proyectofinal.inventario.exception.SinConexionException;
 
 import java.sql.Connection;
@@ -25,7 +26,7 @@ public class Conexion {
     private static final String PASSWORD = "1234";
 
     //Falta explicar esto
-    public Connection obtenetConnection() throws SinConexionException{
+    public Connection obtenetConnection() throws SinConexionException, DriverErrorException{
         try{
             Class.forName(DRIVER);
             Connection connection=
@@ -35,10 +36,10 @@ public class Conexion {
 
             return connection;
         } catch (ClassNotFoundException e){
-            throw new SinConexionException("El driver no se ha cargado correctamente");
+            throw new DriverErrorException("El driver no se ha cargado correctamente", e);
 
         }catch (SQLException e){
-            throw new SinConexionException("Ocurrio un error al establecer la conexion : " + e.getMessage());
+            throw new SinConexionException("Ocurrio un error al establecer la conexion : " + e.getMessage(), e);
 
         }
 

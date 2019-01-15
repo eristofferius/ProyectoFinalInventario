@@ -2,7 +2,7 @@ package cl.accenture.programatufuturo.proyectofinal.inventario.model;
 
 public class CategoriaProducto {
 
-    //Atributos de la clase Usuario
+    //Atributos de la clase Categoria Producto
     private int idCategoria;
     private String nombre;
 

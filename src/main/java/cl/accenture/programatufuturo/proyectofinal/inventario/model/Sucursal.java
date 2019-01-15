@@ -2,7 +2,7 @@ package cl.accenture.programatufuturo.proyectofinal.inventario.model;
 
 public class Sucursal {
 
-    //Atributos de la clase Usuario
+    //Atributos de la clase Sucursal
     private int idTienda;
     private String ubicacion, comuna, direccion;
 
