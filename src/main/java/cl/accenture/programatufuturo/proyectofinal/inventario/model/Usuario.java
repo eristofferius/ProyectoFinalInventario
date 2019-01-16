@@ -3,25 +3,24 @@ package cl.accenture.programatufuturo.proyectofinal.inventario.model;
 public class Usuario {
 
     //Atributos de la clase Usuario
-    private int idUsuario;
-    private String nombre, correo, password;
-    private Rol rol;
+    private String nombre,rut, correo, password;
+    private int rol;
     private Sucursal sucursal;
 
     //Constructores
 
     public Usuario() {
-        this.idUsuario = 0;
         this.nombre = "";
+        this.rut="";
         this.correo = "";
         this.password = "";
-        this.rol = new Rol();
+        this.rol = 0;
         this.sucursal = new Sucursal ();
     }
 
-    public Usuario(int idUsuario, String nombre, String correo, String password, Rol rol, Sucursal sucursal) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombre,String rut, String correo, String password, int rol, Sucursal sucursal) {
         this.nombre = nombre;
+        this.rut = rut;
         this.correo = correo;
         this.password = password;
         this.rol = rol;
@@ -29,13 +28,6 @@ public class Usuario {
     }
 
     //Metodos Get y Set
-    public int getIdUsuario() {
-        return this.idUsuario;
-    }
-
-    public void setIdUsuario(int nuevoIdUsuario) {
-        this.idUsuario = nuevoIdUsuario;
-    }
 
     public String getNombre() {
         return this.nombre;
@@ -43,6 +35,14 @@ public class Usuario {
 
     public void setNombre(String nuevoNombre) {
         this.nombre = nuevoNombre;
+    }
+
+    public String getRut() {
+        return this.rut;
+    }
+
+    public void setRut(String nuevoRut) {
+        this.rut = rut;
     }
 
     public String getCorreo() {
@@ -62,11 +62,12 @@ public class Usuario {
         this.password = nuevaPassword;
     }
 
-    public Rol getRol() {
+    public int getRol() {
+
         return this.rol;
     }
 
-    public void setRol(Rol nuevoRol) {
+    public void setRol(int nuevoRol) {
         this.rol = nuevoRol;
     }
 

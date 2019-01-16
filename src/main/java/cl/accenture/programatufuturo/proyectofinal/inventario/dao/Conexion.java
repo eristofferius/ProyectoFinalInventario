@@ -26,7 +26,7 @@ public class Conexion {
     private static final String PASSWORD = "1234";
 
     //Falta explicar esto
-    public Connection obtenetConnection() throws SinConexionException, DriverErrorException{
+    public Connection obtenerConnection() throws SinConexionException{
         try{
             Class.forName(DRIVER);
             Connection connection=
@@ -36,7 +36,7 @@ public class Conexion {
 
             return connection;
         } catch (ClassNotFoundException e){
-            throw new DriverErrorException("El driver no se ha cargado correctamente", e);
+            throw new SinConexionException("Ocurrio un error al establecer la conexion : " + e.getMessage(), e);
 
         }catch (SQLException e){
             throw new SinConexionException("Ocurrio un error al establecer la conexion : " + e.getMessage(), e);
