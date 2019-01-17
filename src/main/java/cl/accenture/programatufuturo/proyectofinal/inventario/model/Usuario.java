@@ -3,8 +3,7 @@ package cl.accenture.programatufuturo.proyectofinal.inventario.model;
 public class Usuario {
 
     //Atributos de la clase Usuario
-    private String nombre,rut, correo, password;
-    private int rol;
+    private String nombre,rut, correo, password,rol;
     private Sucursal sucursal;
 
     //Constructores
@@ -14,16 +13,16 @@ public class Usuario {
         this.rut="";
         this.correo = "";
         this.password = "";
-        this.rol = 0;
+        this.rol="";
         this.sucursal = new Sucursal ();
     }
 
-    public Usuario(String nombre,String rut, String correo, String password, int rol, Sucursal sucursal) {
+    public Usuario(String nombre,String rut, String correo, String password, String rol, Sucursal sucursal) {
         this.nombre = nombre;
         this.rut = rut;
         this.correo = correo;
         this.password = password;
-        this.rol = rol;
+        this.rol=rol;
         this.sucursal = sucursal;
     }
 
@@ -62,12 +61,12 @@ public class Usuario {
         this.password = nuevaPassword;
     }
 
-    public int getRol() {
+    public String getRol() {
 
         return this.rol;
     }
 
-    public void setRol(int nuevoRol) {
+    public void setRol(String nuevoRol) {
         this.rol = nuevoRol;
     }
 
