@@ -10,8 +10,7 @@ public class Producto {
     private String  marca, categoria;
     //Para representar la relacion de muchos a muchos con producto se crea una lista, una socursal posee muchos productos
     ArrayList<Sucursal> listaSucursales;
-
-
+    ArrayList<Venta> listaDeVentas;
 
     //Constructores
 
@@ -24,8 +23,21 @@ public class Producto {
         this.marca = "";
         this.categoria = "";
         this.listaSucursales= new ArrayList<Sucursal>();
+        this.listaDeVentas= new ArrayList<Venta>();
     }
 
+
+    public Producto(String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria, ArrayList<Sucursal> sucursales, ArrayList<Venta> listaDeVentas) {
+        this.nombre = nombre;
+        this.caracteristica = caracteristica;
+        this.cantidadMin = cantidadMin;
+        this.cantidadMax = cantidadMax;
+        this.precio = precio;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.listaSucursales= sucursales;
+        this.listaDeVentas= listaDeVentas;
+    }
 
     public Producto(String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria) {
         this.nombre = nombre;
@@ -102,6 +114,14 @@ public class Producto {
 
     public void setListaSucursales(ArrayList<Sucursal> nuevaListaSucursales) {
         this.listaSucursales = nuevaListaSucursales;
+    }
+
+    public ArrayList<Venta> getListaDeVentas() {
+        return this.listaDeVentas;
+    }
+
+    public void setListaDeVentas(ArrayList<Venta> listaDeVentas) {
+        this.listaDeVentas = listaDeVentas;
     }
 }
 
