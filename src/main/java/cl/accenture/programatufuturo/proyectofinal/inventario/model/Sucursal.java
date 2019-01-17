@@ -7,7 +7,7 @@ public class Sucursal {
     //Atributos de la clase Sucursal
     private String ubicacion, comuna, direccion;
     //Para representar la relacion de muchos a muchos con producto se crea una lista, una socursal posee muchos productos
-    ArrayList<Producto> listaProductos;
+    private ArrayList<Producto> listaProductos;
 
     //Constructores
 

@@ -9,8 +9,8 @@ public class Producto {
     private int cantidadMin, cantidadMax, precio;
     private String  marca, categoria;
     //Para representar la relacion de muchos a muchos con producto se crea una lista, una socursal posee muchos productos
-    ArrayList<Sucursal> listaSucursales;
-    ArrayList<Venta> listaDeVentas;
+    private ArrayList<Sucursal> listaSucursales;
+    private ArrayList<Venta> listaDeVentas;
 
     //Constructores
 
