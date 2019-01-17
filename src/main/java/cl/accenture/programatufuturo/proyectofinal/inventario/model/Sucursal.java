@@ -1,37 +1,32 @@
 package cl.accenture.programatufuturo.proyectofinal.inventario.model;
 
+import java.util.ArrayList;
+
 public class Sucursal {
 
     //Atributos de la clase Sucursal
-    private int idTienda;
     private String ubicacion, comuna, direccion;
+    //Para representar la relacion de muchos a muchos con producto se crea una lista, una socursal posee muchos productos
+    ArrayList<Producto> listaProductos;
 
     //Constructores
 
     public Sucursal() {
-        this.idTienda = 0;
         this.ubicacion = "";
         this.comuna = "";
         this.direccion = "";
+        this.listaProductos=new ArrayList<Producto>();
     }
 
-    public Sucursal(int idTienda, String ubicacion, String comuna, String direccion) {
-        this.idTienda = idTienda;
+    public Sucursal(String ubicacion, String comuna, String direccion,ArrayList<Producto> productos) {
         this.ubicacion = ubicacion;
         this.comuna = comuna;
         this.direccion = direccion;
+        this.listaProductos=productos;
     }
 
     //Metodos Get y Set
 
-    public int getIdTienda() {
-        return this.idTienda;
-    }
-
-    public void setIdTienda(int nuevoIdTienda) {
-
-        this.idTienda = idTienda;
-    }
 
     public String getUbicacion() {
         return this.ubicacion;
@@ -55,5 +50,13 @@ public class Sucursal {
 
     public void setDireccion(String nuevaDireccion) {
         this.direccion = nuevaDireccion;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return this.listaProductos;
+    }
+
+    public void setProductos(ArrayList<Producto> nuevaListaProductos) {
+        this.listaProductos = nuevaListaProductos;
     }
 }

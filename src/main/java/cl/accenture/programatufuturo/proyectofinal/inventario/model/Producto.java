@@ -1,45 +1,44 @@
 package cl.accenture.programatufuturo.proyectofinal.inventario.model;
 
+import java.util.ArrayList;
+
 public class Producto {
 
     //Atributos de la clase Usuario
-    private int idProducto, cantidadMin, cantidadMax, precio;
-    private String nombre, caracteristica, marca;
-    private CategoriaProducto categoria;
+    private String nombre, caracteristica;
+    private int cantidadMin, cantidadMax, precio;
+    private String  marca, categoria;
+    //Para representar la relacion de muchos a muchos con producto se crea una lista, una socursal posee muchos productos
+    ArrayList<Sucursal> listaSucursales;
+
+
 
     //Constructores
 
     public Producto() {
-        this.idProducto = 0;
+        this.nombre = "";
+        this.caracteristica = "";
         this.cantidadMin = 0;
         this.cantidadMax = 0;
         this.precio = 0;
-        this.nombre = "";
-        this.caracteristica = "";
         this.marca = "";
-        this.categoria = new CategoriaProducto();
+        this.categoria = "";
+        this.listaSucursales= new ArrayList<Sucursal>();
     }
 
-    public Producto(int idProducto, int cantidadMin, int cantidadMax, int precio, String nombre, String caracteristica, String marca, CategoriaProducto categoria) {
-        this.idProducto = idProducto;
+
+    public Producto(String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria) {
+        this.nombre = nombre;
+        this.caracteristica = caracteristica;
         this.cantidadMin = cantidadMin;
         this.cantidadMax = cantidadMax;
         this.precio = precio;
-        this.nombre = nombre;
-        this.caracteristica = caracteristica;
         this.marca = marca;
         this.categoria = categoria;
     }
 
+
     //Metodos Get y Set
-
-    public int getIdProducto() {
-        return this.idProducto;
-    }
-
-    public void setIdProducto(int nuevoIdProducto) {
-        this.idProducto = nuevoIdProducto;
-    }
 
     public int getCantidadMin() {
         return this.cantidadMin;
@@ -89,11 +88,20 @@ public class Producto {
         this.marca = nuevaMarca;
     }
 
-    public CategoriaProducto getCategoria() {
+    public String getCategoria() {
         return this.categoria;
     }
 
-    public void setCategoria(CategoriaProducto nuevaCategoria) {
-        this.categoria = nuevaCategoria;
+    public void setCategoria(String nuevaCategoria) {
+        this.categoria = categoria;
+    }
+
+    public ArrayList<Sucursal> getListaSucursales() {
+        return this.listaSucursales;
+    }
+
+    public void setListaSucursales(ArrayList<Sucursal> nuevaListaSucursales) {
+        this.listaSucursales = nuevaListaSucursales;
     }
 }
+
