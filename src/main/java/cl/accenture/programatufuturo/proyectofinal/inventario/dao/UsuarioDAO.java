@@ -5,6 +5,7 @@ import cl.accenture.programatufuturo.proyectofinal.inventario.exception.SinConex
 import cl.accenture.programatufuturo.proyectofinal.inventario.exception.UsuarioNoExistenteException;
 import cl.accenture.programatufuturo.proyectofinal.inventario.exception.UsuarioNoExistenteException;
 import cl.accenture.programatufuturo.proyectofinal.inventario.exception.UsuarioOContraseñaIncorrectosException;
+import cl.accenture.programatufuturo.proyectofinal.inventario.model.Sucursal;
 import cl.accenture.programatufuturo.proyectofinal.inventario.model.Usuario;
 
 import java.sql.PreparedStatement;
@@ -84,14 +85,17 @@ public class UsuarioDAO {
         if (verificarUsuario(usuario)!=true){
             //En caso de ser diferente a verdadero, procedere a agregar al usuario
             try{
-                final String SQL = "INSERT INTO usuario(Nombre,Rut,Correo, Password, Sucursal_idSucursal, idRol)"+ "VALUES (?,?,?,?,?,?)";
+                final String SQL = "INSERT INTO usuario(Nombre,Rut,Correo, Password, Rol, Sucursal_idSucursal)"+ "VALUES (?,?,?,?,?,?)";
                 PreparedStatement ps = conexion.obtenerConnection().prepareStatement(SQL);
                 ps.setString(1, usuario.getNombre());
                 ps.setString(2,usuario.getRut());
                 ps.setString(3,usuario.getCorreo());
                 ps.setString(4,usuario.getPassword());
-                ps.setInt(5, usuario.getSucursal().getIdTienda());
-                ps.setInt(6,usuario.getRol());
+                ps.setString(5, usuario.getRol());
+
+                SucursalDAO sucursalDAO = new SucursalDAO(this.conexion);
+
+                ps.setObject(6, usuario.getSucursal();
                 ps.executeUpdate();
             } catch (SQLException ex){
                 ex.printStackTrace();

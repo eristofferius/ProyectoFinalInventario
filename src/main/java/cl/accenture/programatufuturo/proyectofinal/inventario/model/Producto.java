@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Producto {
 
     //Atributos de la clase Usuario
+    private int idProducto;
     private String nombre, caracteristica;
     private int cantidadMin, cantidadMax, precio;
     private String  marca, categoria;
@@ -15,19 +16,12 @@ public class Producto {
     //Constructores
 
     public Producto() {
-        this.nombre = "";
-        this.caracteristica = "";
-        this.cantidadMin = 0;
-        this.cantidadMax = 0;
-        this.precio = 0;
-        this.marca = "";
-        this.categoria = "";
-        this.listaSucursales= new ArrayList<Sucursal>();
-        this.listaDeVentas= new ArrayList<Venta>();
+
     }
 
 
-    public Producto(String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria, ArrayList<Sucursal> sucursales, ArrayList<Venta> listaDeVentas) {
+    public Producto(int idProducto, String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria, ArrayList<Sucursal> sucursales, ArrayList<Venta> listaDeVentas) {
+        this.idProducto=idProducto;
         this.nombre = nombre;
         this.caracteristica = caracteristica;
         this.cantidadMin = cantidadMin;
@@ -39,7 +33,7 @@ public class Producto {
         this.listaDeVentas= listaDeVentas;
     }
 
-    public Producto(String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria) {
+    public Producto(String nombre, String caracteristica, int cantidadMin, int cantidadMax, int precio, String marca, String categoria, ArrayList<Sucursal> listaSucursales,ArrayList<Venta> listaDeVentas) {
         this.nombre = nombre;
         this.caracteristica = caracteristica;
         this.cantidadMin = cantidadMin;
@@ -47,10 +41,13 @@ public class Producto {
         this.precio = precio;
         this.marca = marca;
         this.categoria = categoria;
+        this.listaSucursales=listaSucursales;
+        this.listaDeVentas=listaDeVentas;
     }
 
 
     //Metodos Get y Set
+
 
     public int getCantidadMin() {
         return this.cantidadMin;
@@ -122,6 +119,14 @@ public class Producto {
 
     public void setListaDeVentas(ArrayList<Venta> listaDeVentas) {
         this.listaDeVentas = listaDeVentas;
+    }
+
+    public int getIdProducto() {
+        return this.idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 }
 

@@ -7,7 +7,7 @@ public class SucursalDAO {
     //Inicializo esta clase con un constructor que permita la conexion.
 
     //CONSTRUCTOR
-    public SucursalDAO(){
+    public SucursalDAO(Conexion conexion){
 
         this.conexion=new Conexion();
     }

@@ -6,6 +6,7 @@ import java.util.Date;
 public class Venta {
 
     //Atributos clase ventas
+    private int idVenta;
     private Usuario usuario;
     private Sucursal sucursal;
     private Date date;
@@ -14,22 +15,25 @@ public class Venta {
     //Constructores basicos
 
     public Venta() {
-        this.usuario = new Usuario();
-        this.sucursal = new Sucursal();
-        this.date = new Date();
-        this.listaDeProductos = new ArrayList<Producto>();
     }
 
-    public Venta(Usuario usuario, Sucursal sucursal, Date date, ArrayList<Producto> listaDeProductos) {
+    public Venta(int idVenta, Usuario usuario, Sucursal sucursal, Date date, ArrayList<Producto> listaDeProductos) {
+        this.idVenta=idVenta;
         this.usuario = usuario;
         this.sucursal = sucursal;
         this.date = date;
         this.listaDeProductos = listaDeProductos;
     }
 
-
     //set y get
 
+    public int getIdVenta() {
+        return this.idVenta;
+    }
+
+    public void setIdVenta(int idVenta) {
+        this.idVenta = idVenta;
+    }
 
     public Usuario getUsuario() {
         return this.usuario;

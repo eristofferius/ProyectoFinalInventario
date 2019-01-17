@@ -9,17 +9,11 @@ public class Usuario {
     //Constructores
 
     public Usuario() {
-        this.nombre = "";
-        this.rut="";
-        this.correo = "";
-        this.password = "";
-        this.rol="";
-        this.sucursal = new Sucursal ();
     }
 
-    public Usuario(String nombre,String rut, String correo, String password, String rol, Sucursal sucursal) {
-        this.nombre = nombre;
+    public Usuario(String rut,String nombre, String correo, String password, String rol, Sucursal sucursal) {
         this.rut = rut;
+        this.nombre = nombre;
         this.correo = correo;
         this.password = password;
         this.rol=rol;
