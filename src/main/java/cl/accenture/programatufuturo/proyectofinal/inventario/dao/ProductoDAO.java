@@ -54,7 +54,7 @@ public class ProductoDAO {
     }
 
     //Metodo que me permitira agregar un Producto que no se encuentre en la base de datos
-    public void agregarUsuario(Producto producto) throws SinConexionException, SQLException, ProductoYaEnSistemaException {
+    public void agregarProducto(Producto producto) throws SinConexionException, SQLException, ProductoYaEnSistemaException {
         //Verifico que no exista algun producto con el mismo nombre en la base de datos
         if (VerificarProducto(producto)!=false){
             //En caso de ser diferente a false, procedere a agregar al producto
