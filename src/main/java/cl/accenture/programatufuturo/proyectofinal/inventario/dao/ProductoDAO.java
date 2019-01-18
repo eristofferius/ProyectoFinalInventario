@@ -33,8 +33,6 @@ public class ProductoDAO {
         this.conexion = conexion;
     }
 
-
-
     //Metodo para agregar producto, en caso de que no exista o no se pueda conectar por algun problema, no realizara nada, solo me indicara el problema.
 
     public boolean VerificarProducto(Producto Producto) throws ProductoYaEnSistemaException,SinConexionException, SQLException {
