@@ -11,15 +11,11 @@ import cl.accenture.programatufuturo.proyectofinal.inventario.model.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class UsuarioDAO {
 
-
-    //Se crea atributo para la conexion, dado que sera necesaria para trabajar con los datos y tablas de SQL
     private Conexion conexion;
 
-    //Inicializo esta clase con un constructor que permita la coneccion.
     public UsuarioDAO(){
 
         this.conexion=new Conexion();
@@ -37,6 +33,7 @@ public class UsuarioDAO {
         this.conexion = conexion;
     }
 
+    //Login para ingresar, retorna un boolean, recibe un String nombre y un String Usuario
     public boolean login(String usuario, String password) throws UsuarioOContraseñaIncorrectosException, SinConexionException {
         try {
 
@@ -62,6 +59,7 @@ public class UsuarioDAO {
     }
 
     //Metodo para agregar usuario, en caso de que no exista o no se pueda conectar por algun problema, no realizara nada, solo me indicara el problema.
+    //verificar usuario, retorna un boolean, recibe un usuario
 
     public boolean verificarUsuario(Usuario usuario) throws UsuarioNoExistenteException,SinConexionException, SQLException {
         //Creo la consulta en SQL en la cual indico cual sera mi condicion
@@ -79,23 +77,20 @@ public class UsuarioDAO {
         throw new UsuarioNoExistenteException("El usuario no ha sido creado");
     }
 
-    //Metodo que me permitira agregar a un usuario que no se encuentre en la base de datos
+    //Metodo que me permitira agregar a un usuario que no se encuentre en la base de datos, retornara void, resivira un usuario
     public void agregarUsuario(Usuario usuario) throws SinConexionException, SQLException, UsuarioNoExistenteException {
         //Verifico que no exista algun usuario con el mismo rut en la base de datos
         if (verificarUsuario(usuario)!=true){
             //En caso de ser diferente a verdadero, procedere a agregar al usuario
             try{
-                final String SQL = "INSERT INTO usuario(Nombre,Rut,Correo, Password, Rol, Sucursal_idSucursal)"+ "VALUES (?,?,?,?,?,?)";
+                final String SQL = "INSERT INTO usuario(Rut,Nombre,Correo, Password, Rol, Sucursal_idSucursal)"+ "VALUES (?,?,?,?,?,?)";
                 PreparedStatement ps = conexion.obtenerConnection().prepareStatement(SQL);
                 ps.setString(1, usuario.getNombre());
                 ps.setString(2,usuario.getRut());
                 ps.setString(3,usuario.getCorreo());
                 ps.setString(4,usuario.getPassword());
                 ps.setString(5, usuario.getRol());
-
-                SucursalDAO sucursalDAO = new SucursalDAO(this.conexion);
-
-                ps.setObject(6, usuario.getSucursal();
+                ps.setInt(6, usuario.getSucursal().getIdSucursal());
                 ps.executeUpdate();
             } catch (SQLException ex){
                 ex.printStackTrace();
@@ -104,18 +99,24 @@ public class UsuarioDAO {
         System.out.println("Usuario existente");
     }
 
-    public void eliminarUsuarioPorRut(String rut) throws SinConexionException {
-        try{
-            final String SQL = "UPDATE * FROM usuario WHERE Rut = ?";
-            PreparedStatement ps = conexion.obtenerConnection().prepareStatement(SQL);
-            ResultSet resultadoDelete= ps.executeQuery(SQL);
-            //Le asigno valor al '?'
-            ps.setString(1, rut);
-            ps.executeUpdate();
-        } catch (SQLException ex){
-            ex.printStackTrace();
+    public void eliminarUsuarioPorRut(Usuario usuario) throws SinConexionException, UsuarioNoExistenteException, SQLException {
+        if (verificarUsuario(usuario)!=true){
+            //En caso de ser verdadero, procedere a eliminar al usuario
+            System.out.println("Usuario no existente");
+
+        } else {
+            try{
+                final String SQL = "UPDATE * FROM usuario WHERE Rut = ?";
+                PreparedStatement ps = conexion.obtenerConnection().prepareStatement(SQL);
+                //Le asigno valor al '?'
+                ps.setString(1, usuario.getRut());
+                ps.executeUpdate();
+            } catch (SQLException ex){
+                ex.printStackTrace();
+            }
+
         }
-        System.out.println("No existe un usuario con el rut indicado para eliminar");
+
     }
 
 }
