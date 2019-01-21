@@ -36,7 +36,7 @@ public class SucursalDAO {
     public void agregarSucursal(Sucursal sucursal) throws SinConexionException, SQLException {
 
         try {
-            final String SQL = "INSERT INTO Producto(idSucursal,ubicacion,comuna,direccion)" + "VALUES (?,?,?,?)";
+            final String SQL = "INSERT INTO Sucursal(idSucursal,ubicacion,comuna,direccion)" + "VALUES (?,?,?,?)";
             PreparedStatement ps = conexion.obtenerConnection().prepareStatement(SQL);
             ps.setInt(1, sucursal.getIdSucursal());
             ps.setString(2, sucursal.getUbicacion());
